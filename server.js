@@ -6,6 +6,10 @@ const path = require('path');
 const expressLayout = require('express-ejs-layouts');
 const port = process.env.PORT || 8080;
 
+
+//ASSETS
+app.use(express.static('public'));
+
 app.get("/", (req, res) => {
   res.render('home');
 });
