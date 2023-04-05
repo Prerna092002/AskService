@@ -13,7 +13,9 @@ app.use(express.static('public'));
 app.get("/", (req, res) => {
   res.render('home');
 });
-
+app.get('/about',(req,res)=>{
+  res.render('about');
+})
 //setting up template
 
 app.use(expressLayout)
