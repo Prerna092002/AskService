@@ -1,4 +1,4 @@
-body {
-  font-family: "Lato", sans-serif;
-  color: black;
+.width-100 {
+  height: 500px;
+  width: 300px;
 }
