@@ -11,15 +11,7 @@ const db = require('./app/config/mongoose')
 //ASSETS
 app.use(express.static('public'));
 
-app.get("/", (req, res) => {
-  res.render('home');
-});
-app.get('/about', (req, res) => {
-  res.render('about');
-})
-app.get('/login',(req,res)=>{
-  res.render('auth/workers/login');
-})
+app.use('/' , require('./routes'));
 
 
 app.use(expressLayout)
