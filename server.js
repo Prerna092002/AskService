@@ -5,7 +5,7 @@ const ejs = require('ejs');
 const path = require('path');
 const expressLayout = require('express-ejs-layouts');
 const port = process.env.PORT || 8080;
-
+const db = require('./app/config/mongoose')
 
 //ASSETS
 app.use(express.static('public'));
@@ -15,6 +15,9 @@ app.get("/", (req, res) => {
 });
 app.get('/about',(req,res)=>{
   res.render('about');
+})
+app.get('/login',(req,res)=>{
+  res.render('auth/workers/login');
 })
 //setting up template
 
