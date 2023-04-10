@@ -9,4 +9,8 @@ router.get('/login', function (req, res) {
     res.render('./auth/workers/login');
 })
 
+router.get('/register', function (req, res) {
+    res.render('./auth/workers/register');
+})
+
 module.exports = router;
