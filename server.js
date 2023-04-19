@@ -11,8 +11,8 @@ const db = require('./app/config/mongoose')
 //ASSETS
 app.use(express.static('public'));
 
-app.use('/' , require('./routes'));
-
+app.use(express.urlencoded({ extended: true }));
+app.use('/', require('./routes'));
 
 app.use(expressLayout)
 app.set('views', path.join(__dirname, '/resources/views'))
