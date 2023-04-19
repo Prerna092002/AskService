@@ -99,6 +99,12 @@ input {
     max-width: 100%;
     min-height: 480px;
 }
+a.signupbtn{
+    background-color: black;
+    border-radius: 3vh;
+    padding: 12px 33px;
+    color: #DDDDDD;
+}
 
 .form-container {
     position: absolute;
