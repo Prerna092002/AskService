@@ -41,7 +41,7 @@
       </form>
     </div>
     <div class="form-container sign-in-container">
-      <form action="/login">
+      <form action="/login" method="post">
         <h1>Sign in</h1>
         <div class="social-container">
           <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
@@ -49,8 +49,8 @@
           <a href="#" class="social"><i class="fa fa-google"></i></a>
         </div>
         <span>or use your account</span>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <input type="email" placeholder="Email" name="email" />
+        <input type="password" placeholder="Password" name="password" />
         <a href="#">Forgot your password?</a>
         <button>Sign In</button>
       </form>
@@ -65,13 +65,13 @@
         <class class="overlay-panel overlay-right">
           <h1>Hello, Friend!</h1>
           <p>Enter your personal details and start journey with us</p>
-          <a href = "/register" class="signupbtn"><b>Sign Up</b></a>
-          </class>
-        </div>
+          <a href="/register" class="signupbtn"><b>Sign Up</b></a>
+        </class>
       </div>
     </div>
   </div>
-  
+  </div>
+
 </body>
 
 </html>
