@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
 });
 
 
-router.get('/customer',function(req,res){
+router.get('/customer', function (req, res) {
     return res.render('Customers/cHome');
 })
 router.get('/register', function (req, res) {
@@ -49,6 +49,13 @@ router.post('/login', passport.authenticate(
 ), function (req, res) {
     console.log("session connected");
     return res.redirect('/');
+});
+
+router.get('/logout', function (req, res, next) {
+    req.logout(function (err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+    });
 })
 
 module.exports = router;
