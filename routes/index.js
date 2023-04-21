@@ -9,7 +9,9 @@ router.get('/', function (req, res) {
 });
 
 
-
+router.get('/customer',function(req,res){
+    return res.render('Customers/cHome');
+})
 router.get('/register', function (req, res) {
     if (req.isAuthenticated()) {
         return res.redirect('/');
