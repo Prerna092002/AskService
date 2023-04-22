@@ -63,4 +63,8 @@ router.get('/wHome', function (req, res) {
     return res.render('./workers/wHome');
 })
 
+router.get('/chatbot', function (req, res) {
+    return res.render('./workers/chatbot');
+})
+
 module.exports = router;
