@@ -69,3 +69,25 @@ body {
  
 
 }
+#iconshome-main{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  
+}
+#iconshome-main div p{
+  word-wrap: break-word;
+  color: blue;
+}
+.policy-btn{
+  margin-top:-380px;
+  
+  font-size: 20px;
+  padding:3px 40px;
+  text-align: center;
+  margin-left: 100px;
+}
+#iconshome-main div h4{
+  color: blue;
+  text-align: center;
+}
