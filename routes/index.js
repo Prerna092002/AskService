@@ -9,8 +9,8 @@ router.get('/', function (req, res) {
 });
 
 
-router.get('/customer', function (req, res) {
-    return res.render('Customers/cHome');
+router.get('/cHome', function (req, res) {
+    return res.render('./Customers/cHome');
 })
 router.get('/register', function (req, res) {
     if (req.isAuthenticated()) {
@@ -48,7 +48,7 @@ router.post('/login', passport.authenticate(
     }
 ), function (req, res) {
     console.log("session connected");
-    return res.redirect('/');
+    return res.redirect('./Customers/cHome');
 });
 
 router.get('/logout', function (req, res, next) {
@@ -56,6 +56,15 @@ router.get('/logout', function (req, res, next) {
         if (err) { return next(err); }
         res.redirect('/');
     });
+})
+
+
+router.get('/wHome', function (req, res) {
+    return res.render('./workers/wHome');
+})
+
+router.get('/chatbot', function (req, res) {
+    return res.render('./workers/chatbot');
 })
 
 module.exports = router;
