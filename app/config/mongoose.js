@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb://127.0.0.1:27017/AskService`);
+mongoose.connect(`mongodb+srv://kashishgoyal961:PiVqOx22ekls2jkI@cluster905.4zypzwn.mongodb.net/AskService`);
 
 const db = mongoose.connection;
 

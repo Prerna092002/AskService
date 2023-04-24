@@ -1,10 +1,10 @@
-require('dotenv')
+require('dotenv');
+
 const express = require("express");
 const app = express();
-const ejs = require('ejs');
 const path = require('path');
+
 const expressLayout = require('express-ejs-layouts');
-const port = process.env.PORT || 8080;
 
 const db = require('./app/config/mongoose');
 
@@ -14,17 +14,15 @@ const passportLocal = require('./app/config/passport-local');
 
 //ASSETS
 app.use(express.static('public'));
-
-
-
 app.use(express.urlencoded({ extended: true }));
+
 
 
 // to permamnently store the session
 const MongoStore = require('connect-mongo');
 app.use(session({
   name: 'AskService',
-  secret: "blabla",
+  secret: "babu",
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -32,7 +30,7 @@ app.use(session({
   },
   store: MongoStore.create(
     {
-      mongoUrl: 'mongodb://127.0.0.1:27017/AskService',
+      mongoUrl: 'mongodb+srv://kashishgoyal961:PiVqOx22ekls2jkI@cluster905.4zypzwn.mongodb.net/AskService',
       dbName: 'db'
     },
     function (err) {
@@ -41,11 +39,12 @@ app.use(session({
   )
 }));
 
-
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+
+
 
 app.use('/', require('./routes'));
 
@@ -54,10 +53,14 @@ app.set('views', path.join(__dirname, '/resources/views'))
 app.set('view engine', 'ejs');
 
 
-app.listen(port, function (req, res, err) {
+
+
+
+app.listen(8080, function (req, res, err) {
   if (err) {
     console.log(err);
+    return;
   } else {
-    console.log("server is running on port 8080");
+    console.log("server is running on port no 8080");
   }
 });

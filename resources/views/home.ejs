@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="/css/footer.css" />
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></head> -->
   <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
 <body>
   <!-- <h1>Hello i am here</h1> -->
   <div class="Maincontainer">
@@ -34,13 +35,13 @@
       <div>
         <ul class="flex items-center">
           <li class="ml-10 mt-3">
-            <h5><a href="/customer" class="links">Hire</a></h5>
+            <h5><a href="/cHome" class="links">Hire</a></h5>
           </li>
           <li class="ml-10 mt-3">
             <h5><a href="/wHome" class="links">Apply for job</a></h5>
           </li>
           <li class="ml-10 mt-3">
-            <h5><a href="#" class="links">About</a></h5>
+            <h5><a href="/about" class="links">About</a></h5>
           </li>
           <% if(locals.user){%>
             <li class="ml-10 mt-3">
@@ -103,7 +104,7 @@
           <i style="font-size: 80px; color: blue;" class="fas fa-bed"></i>
           <br><br>
           <h6 style="color: blue;">Patient Care</h6>
-          <P >Regular medications and other needs</P>
+          <P>Regular medications and other needs</P>
         </div>
         <div>
           <i style="font-size: 80px; color: blue;" class="fas fa-cutlery"></i>
@@ -111,40 +112,41 @@
           <h6 style="color: blue;">Cook</h6>
           <p>Variety of foods with proper clenliness</p>
         </div>
-        
-       
+
+
       </div>
     </div>
     <div style="height: 750px; background: beige;">
       <br><br>
-      <p style="color: blue; font-size: 50px; text-align: center;">OUR <span style="font-weight: bolder; ">POLICES</span> </p>
+      <p style="color: blue; font-size: 50px; text-align: center;">OUR <span
+          style="font-weight: bolder; ">POLICES</span> </p>
       <div id="iconshome-main">
         <div>
-        <img style="height: 400px; width: 300px;" src="/im/SafeAndReliable">
-        <button class="policy-btn btn-primary">SAFE</button>
-        <br><br>
-        <h4>SAFE AND RELIABLE</h4>
-        <br>
-        <p>Your safety is our first priority. </p>
-       <p> We do a thorough background check of every maid</p>
-      </div>
-      <div>
-        <img style="height: 400px; width: 300px;" src="/im/Replacement">
-        <button class="policy-btn btn-primary">FREE</button>
-        <br><br>
-        <h4>FREE REPLACEMENT</h4>
-        <p>If the maid leaves for any reason within</p>
-          <p> 3 months of joining, we will replace the maid.</p>
-      </div>
-      <div>
-        <img style="height: 400px; width: 300px;" src="/im/MultipleOptions">
-        <button class="policy-btn btn-primary">OPTIONS</button>
-        <br><br>
-        <h4>MULTIPLE OPTIONS</h4>
-        <p>Watch as many profiles as you want. </p>
-        <p>Select only the one you find best.</p>
-      </div>
+          <img style="height: 400px; width: 300px;" src="/im/SafeAndReliable">
+          <button class="policy-btn btn-primary">SAFE</button>
+          <br><br>
+          <h4>SAFE AND RELIABLE</h4>
+          <br>
+          <p>Your safety is our first priority. </p>
+          <p> We do a thorough background check of every maid</p>
         </div>
+        <div>
+          <img style="height: 400px; width: 300px;" src="/im/Replacement">
+          <button class="policy-btn btn-primary">FREE</button>
+          <br><br>
+          <h4>FREE REPLACEMENT</h4>
+          <p>If the maid leaves for any reason within</p>
+          <p> 3 months of joining, we will replace the maid.</p>
+        </div>
+        <div>
+          <img style="height: 400px; width: 300px;" src="/im/MultipleOptions">
+          <button class="policy-btn btn-primary">OPTIONS</button>
+          <br><br>
+          <h4>MULTIPLE OPTIONS</h4>
+          <p>Watch as many profiles as you want. </p>
+          <p>Select only the one you find best.</p>
+        </div>
+      </div>
     </div>
     <div class="footer">
       <%- (include('footer')) %>

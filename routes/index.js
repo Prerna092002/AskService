@@ -11,24 +11,33 @@ router.get('/', function (req, res) {
 
 router.get('/cHome', function (req, res) {
     return res.render('./Customers/cHome');
-})
+});
+
 router.get('/register', function (req, res) {
     if (req.isAuthenticated()) {
         return res.redirect('/');
     }
+
     res.render('./auth/workers/register');
 });
 
 router.post('/register', async function (req, res) {
-    const user = await User.findOne({ email: req.body.email });
-    if (!user) {
-        const newUser = await User.create(req.body);
-        console.log(newUser);
-        return res.redirect('./login');
+    try {
+        const user = await User.findOne({ email: req.body.email });
+
+        if (!user) {
+            const newUser = await User.create(req.body);
+            console.log(newUser);
+            return res.redirect('./login');
+        }
+        else {
+            return res.render('./auth/workers/register', { error: 'Email already exists' });
+        }
+    } catch (err) {
+        console.log(err);
+        return res.redirect('/register');
     }
-    else {
-        return res.render('./auth/workers/register', { error: 'Email already exists' });
-    }
+
 });
 
 
@@ -36,6 +45,7 @@ router.get('/login', function (req, res) {
     if (req.isAuthenticated()) {
         return res.redirect('/');
     }
+
     res.render('./auth/workers/login');
 });
 
@@ -48,8 +58,9 @@ router.post('/login', passport.authenticate(
     }
 ), function (req, res) {
     console.log("session connected");
-    return res.redirect('./Customers/cHome');
+    return res.redirect('./');
 });
+
 
 router.get('/logout', function (req, res, next) {
     req.logout(function (err) {
@@ -61,7 +72,11 @@ router.get('/logout', function (req, res, next) {
 
 router.get('/wHome', function (req, res) {
     return res.render('./workers/wHome');
-})
+});
+
+router.get('/about', function (req, res) {
+    return res.render('./about');
+});
 
 router.get('/chatbot', function (req, res) {
     return res.render('./workers/chatbot');
