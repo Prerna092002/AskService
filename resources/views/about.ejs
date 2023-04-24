@@ -33,17 +33,35 @@
       <div>
         <ul class="flex items-center">
           <li class="ml-10 mt-3">
-            <h5><a href="#" class="links">Hire</a></h5>
+          <li class="ml-10 mt-3">
+            <h5><a href="/cHome" class="links">Hire</a></h5>
           </li>
           <li class="ml-10 mt-3">
-            <h5><a href="#" class="links">Apply for job</a></h5>
+            <h5><a href="/wHome" class="links">Apply for job</a></h5>
           </li>
           <li class="ml-10 mt-3">
-            <h5><a href="#" class="links">About</a></h5>
+            <h5><a href="/about" class="links">About</a></h5>
           </li>
-          <li class="ml-10 mt-3">
-            <h5><a href="#" class="links">Login</a></h5>
-          </li>
+          <% if(locals.user){%>
+            <li class="ml-10 mt-3">
+              <h5><a href="/profile" class="links">
+                  <%=locals.user.name%>
+                </a></h5>
+            </li>
+            <% }else{ %>
+              <li class="ml-10 mt-3">
+                <h5><a href="/login" class="links">Login</a></h5>
+              </li>
+              <% }%>
+                <% if(locals.user){%>
+                  <li class="ml-10 mt-3">
+                    <h5>
+                      <form action="/logout">
+                        <button>Logout</button>
+                      </form>
+                    </h5>
+                  </li>
+                  <% } %>
         </ul>
       </div>
     </nav>

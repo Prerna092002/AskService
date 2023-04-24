@@ -8,13 +8,22 @@ const User = require('../models/user_schema');
 passport.use(new LocalStrategy({
     usernameField: 'email'
 }, async function (email, password, done) {
-    const user = await User.findOne({ email: email });
+    try {
+        const user = await User.findOne({ email: email });
 
-    if (!user || user.password != password) {
-        console.log("false password/email", err);
-        return done(null, false);
+        if (!user || user.password != password) {
+            console.log("Invalid Username/Password");
+            console.log(err);
+            return done(null, false);
+        }
+
+        return done(null, user);
+    } catch (err) {
+        console.log("error in authenticating user");
+        console.log(err);
+        return;
     }
-    return done(null, user);
+
 }));
 
 
@@ -23,8 +32,19 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(async function (id, done) {
-    const user = await User.findById(id);
-    return done(null, user);
+    try {
+        const user = await User.findById(id);
+        if (!user) {
+            console.log("error in finding the user to authenticate");
+            return;
+        }
+
+        return done(null, user);
+    } catch (err) {
+        console.log("error in authenticating user");
+        console.log(err);
+        return;
+    }
 });
 
 passport.checkauthentication = function (req, res, next) {
