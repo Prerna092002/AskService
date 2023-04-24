@@ -45,9 +45,26 @@
           <li class="ml-10 mt-3">
             <h5><a href="#" class="links">About</a></h5>
           </li>
-          <li class="ml-10 mt-3">
-            <h5><a href="/login" class="links">Login</a></h5>
-          </li>
+          <% if(locals.user){%>
+            <li class="ml-10 mt-3">
+              <h5><a href="/customer" class="links">
+                  <%=locals.user.name%>
+                </a></h5>
+            </li>
+            <% }else{ %>
+              <li class="ml-10 mt-3">
+                <h5><a href="/login" class="links">Login</a></h5>
+              </li>
+              <% }%>
+                <% if(locals.user){%>
+                  <li class="ml-10 mt-3">
+                    <h5>
+                      <form action="/logout">
+                        <button>Logout</button>
+                      </form>
+                    </h5>
+                  </li>
+                  <% } %>
         </ul>
       </div>
     </nav>
