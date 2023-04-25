@@ -51,7 +51,7 @@ passport.checkauthentication = function (req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    return res.redirect('/sign-in');
+    return res.redirect('/login');
 }
 
 passport.setAuthenticatedUser = function (req, res, next) {

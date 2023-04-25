@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../app/models/user_schema');
+const User = require('../models/user_schema');
 const passport = require('passport');
 
 
@@ -58,7 +58,7 @@ router.post('/login', passport.authenticate(
     }
 ), function (req, res) {
     console.log("session connected");
-    return res.redirect('./');
+    return res.redirect('./auth/Customers/profile');
 });
 
 
@@ -81,5 +81,35 @@ router.get('/about', function (req, res) {
 router.get('/chatbot', function (req, res) {
     return res.render('./workers/chatbot');
 })
+
+router.get('/updatePass', function (req, res) {
+
+});
+
+router.get('/profile/:id', async function (req, res) {
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+        console.log("user not found");
+        return;
+    }
+
+    return res.render('./Customers/profile', {
+        user: user,
+    });
+});
+
+// router.get('./updateUser', async function (req, res) {
+//     const user = await User.findById(req.params.id);
+
+//     if (!user) {
+//         console.log("user not found");
+//         return;
+//     }
+
+//     return res.render('./Customers/profileUpdate', {
+//         user: user,
+//     });
+// })
 
 module.exports = router;

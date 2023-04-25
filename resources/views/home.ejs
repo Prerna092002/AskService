@@ -45,7 +45,7 @@
           </li>
           <% if(locals.user){%>
             <li class="ml-10 mt-3">
-              <h5><a href="/customer" class="links">
+              <h5><a href="/profile/<%=locals.user._id%>" class="links">
                   <%=locals.user.name%>
                 </a></h5>
             </li>

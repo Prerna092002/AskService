@@ -6,11 +6,11 @@ const path = require('path');
 
 const expressLayout = require('express-ejs-layouts');
 
-const db = require('./app/config/mongoose');
+const db = require('./config/mongoose');
 
 const session = require('express-session');
 const passport = require('passport');
-const passportLocal = require('./app/config/passport-local');
+const passportLocal = require('./config/passport-local');
 
 //ASSETS
 app.use(express.static('public'));
