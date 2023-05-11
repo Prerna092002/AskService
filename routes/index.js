@@ -59,7 +59,7 @@ router.get('/login', function (req, res) {
         return res.redirect('/');
     }
 
-    res.render('./');
+    res.render('./auth/workers/login');
 });
 
 
@@ -71,7 +71,7 @@ router.post('/login', passport.authenticate(
     }
 ), function (req, res) {
     console.log("session connected");
-    return res.redirect('./auth/Customers/profile');
+    return res.redirect('./');
 });
 
 

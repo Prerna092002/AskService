@@ -81,43 +81,47 @@
         <!-- Home Cleaning -->
         <br>
         <br>
-        <% let count = 0%>
+        <% let count=0%>
             <%for(job of jobs){ %>
                 <% if(job.role==locals.role){%>
-                    <% count = count + 1 %>
-                    <div class="card" style="width: 1100px; height: 315px;">
-                        <div class="row no-gutters">
-                            <div class="col-sm-5">
-                                <img class="card-img" src="/im/Cleaning" alt="Home Cleaning">
-                            </div>
-                            <div class="col-sm-7"
-                                style="background-color: lightgray; text-align: center; align-items: center;">
-                                <div class="card-body">
-                                    <br>
-                                    <br>
-                                    <h3 class="card-title" style="color: blue;">
-                                        <%=job.role%>
-                                    </h3>
-                                    <p class="card-text" style="font-size: 20px;">
-                                        <%=job.email%>
-                                    </p>
-                                    <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
+                    <% count=count + 1 %>
+                        <div class="card" style="width: 1100px; height: 315px;">
+                            <div class="row no-gutters">
+                                <div class="col-sm-5">
+                                    <img class="card-img"
+                                        src="https://i.pinimg.com/236x/47/5a/86/475a86177aeedacf8dc7f5e2b4eff61f.jpg"
+                                        alt="User Image">
+                                </div>
+                                <div class="col-sm-7"
+                                    style="background-color: lightgray; text-align: center; align-items: center;">
+                                    <div class="card-body">
+                                        <br>
+                                        <br>
+                                        <h3 class="card-title" style="color: blue;">
+                                            <%=job.username%>
+                                        </h3>
+                                        <p class="card-text" style="font-size: 20px;">
+                                            <%=job.email%>
+                                        </p>
+                                        <p class="card-text" style="font-size: 20px;">
+                                            <%= job.contact%>
+                                        </p>
 
 
-                                    <a href="/hire/<%=job.role%>" class="btn btn-primary">Hire</a>
+                                        <a href="/hire/<%=job.role%>" class="btn btn-primary">Hire</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <%} %>
-                        <% }%>
+                        <br>
+                        <br>
+                        <br>
+                        <%} %>
+                            <% }%>
 
-                <% if(count===0){ %>
-                    <h1 style = "text-align: center;">No User Found For This Job Profile.</h1>
-                    <%}%>
+                                <% if(count===0){ %>
+                                    <h1 style="text-align: center;">No User Found For This Job Profile.</h1>
+                                    <%}%>
 
     </div>
 

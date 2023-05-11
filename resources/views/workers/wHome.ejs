@@ -149,7 +149,15 @@
 
         <div class="section"><span>3</span>Personal info</div>
         <div class="inner-wrap">
-          <label>Applying for?<input type="text" name="role" /></label>
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="role">
+            <option selected>Applying for</option>
+            <option value="ElderlyCare">Elderly Care</option>
+            <option value="PateintCare">Pateint Care</option>
+            <option value="HomeCleaning">Home Cleaning</option>
+            <option value="Cook">Cook</option>
+            <option value="BabyCaretaker">Baby Caretaker</option>
+          </select>
+          <!-- <label>Applying for?<input type="text" name="role" /></label> -->
           <label>Age<input type="number" name="age" /></label>
           <label>Years of experince<input type="number" name="exp" /></label>
           <label>Expected Income<input type="number" name="income" /></label>
