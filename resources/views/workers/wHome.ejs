@@ -85,7 +85,7 @@
 
     <nav class="container flex items-center justify-between navbar">
       <div>
-        <!-- <img src="/im/AskServiceLogo.png" alt="logo" width="80" /> -->
+        <img src="/im/AskServiceLogo.png" alt="logo" width="80" />
         <h2>AskService</h2>
       </div>
       <div>
@@ -125,6 +125,7 @@
     </nav>
 
 
+
     <div style="text-align: center; color: blue;">
       <span style="font-size:75px; font-weight:bolder">APPLY FOR JOB</span>
       <!-- <span style="font-size:75px; font-weight: 100;">ONLINE</span> -->
@@ -133,33 +134,28 @@
 
     <div class="form-style-10">
       <h1>Fill the below details<span></span></h1>
-      <form class="details">
+      <form class="details" method="post" action="/applyjob">
         <div class="section"><span>1</span>First Name & Address</div>
         <div class="inner-wrap">
-          <label>Your Full Name <input type="text" name="field1" /></label>
-          <label>Address <textarea name="field2"></textarea></label>
+          <label>Your Full Name <input type="text" name="username" /></label>
+          <label>Address <input type="text" name="address"></input></label>
         </div>
 
         <div class="section"><span>2</span>Email & Phone</div>
         <div class="inner-wrap">
-          <label>Email Address <input type="email" name="field3" /></label>
-          <label>Phone Number <input type="text" name="field4" /></label>
+          <label>Email Address <input type="email" name="email" /></label>
+          <label>Phone Number <input type="text" name="contact" /></label>
         </div>
 
         <div class="section"><span>3</span>Personal info</div>
         <div class="inner-wrap">
-          <label>Applying for?<input type="text" name="field5" /></label>
-          <label>Age<input type="number" name="field6" /></label>
-          <label>Years of experince<input type="number" name="field6" /></label>
-          <label>Expected Income<input type="number" name="field6" /></label>
+          <label>Applying for?<input type="text" name="role" /></label>
+          <label>Age<input type="number" name="age" /></label>
+          <label>Years of experince<input type="number" name="exp" /></label>
+          <label>Expected Income<input type="number" name="income" /></label>
 
         </div>
-        <div class="button-section">
-          <input type="submit" name="Sign Up" />
-          <span class="privacy-policy">
-            <!-- <input type="checkbox" name="field7">You agree to our Terms and Policy.  -->
-          </span>
-        </div>
+        <button>Submit</button>
       </form>
     </div>
 </body>
