@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user_schema');
+const Job = require('../models/job_Schmea')
 const passport = require('passport');
 
 
@@ -9,9 +10,21 @@ router.get('/', function (req, res) {
 });
 
 
-router.get('/cHome', function (req, res) {
-    return res.render('./Customers/cHome');
+router.get('/cHome', async function (req, res) {
+    const jobs = await Job.find({});
+    return res.render('./Customers/cHome', {
+        jobs: jobs
+    });
 });
+
+router.get('/jobProfile/:role', async function (req, res) {
+    const jobs = await Job.find({});
+    const role = req.params.role;
+    return res.render('./Customers/jobProfiles', {
+        jobs: jobs,
+        role:role
+    });
+})
 
 router.get('/register', function (req, res) {
     if (req.isAuthenticated()) {
@@ -46,7 +59,7 @@ router.get('/login', function (req, res) {
         return res.redirect('/');
     }
 
-    res.render('./auth/workers/login');
+    res.render('./');
 });
 
 
@@ -84,6 +97,18 @@ router.get('/chatbot', function (req, res) {
 
 router.get('/updatePass', function (req, res) {
 
+});
+
+router.post('/applyjob', async function (req, res) {
+    try {
+        const job = await Job.create(req.body);
+        console.log(job);
+        return res.redirect('./');
+
+    } catch (e) {
+        console.log("error in creating a job", e);
+        return;
+    }
 });
 
 router.get('/profile/:id', async function (req, res) {
