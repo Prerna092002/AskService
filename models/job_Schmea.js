@@ -9,7 +9,7 @@ const jobSchema = new Schema({
     role: { type: String, default: 'customer' },
     age: { type: Number },
     exp: { type: Number },
-    incomne: { type: Number }
+    income: { type: Number }
 }, { timestamps: true })
 
 const Job = mongoose.model('Job', jobSchema);
