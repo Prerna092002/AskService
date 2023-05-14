@@ -3,6 +3,19 @@ const router = express.Router();
 const User = require('../models/user_schema');
 const Job = require('../models/job_Schmea')
 const passport = require('passport');
+const nodemailer = require('nodemailer');
+const notifier = require('node-notifier');
+
+var transporter = nodemailer.createTransport({
+	service: 'gmail',
+	auth: {
+		user: 'serviceask54@gmail.com',
+		pass: 'oexmuvpzygahfchw'
+	},
+	port: 465,
+	host: 'smtp.gmail.com',
+	secure: false
+});
 
 
 router.get('/', function (req, res) {
@@ -24,6 +37,36 @@ router.get('/jobProfile/:role', async function (req, res) {
         jobs: jobs,
         role:role
     });
+})
+
+router.post('/sendMail', async function (req, res) {
+
+    const {email} = req.body;
+    console.log(email)
+    try {
+        let result = await transporter.sendMail({
+            from: 'serviceask54@gmail.com', // sender address
+            to: email, // list of receivers
+            subject: 'You have new invitation for a job', // Subject line
+            text: `email: ${req.user.email}`
+        });
+         notifier.notify({
+            title: 'message',
+            message: 'email sent successfully',
+            sound: true
+          });
+
+          return res.redirect('back');
+          
+    } catch (e) {
+        console.log(e);
+         notifier.notify({
+            title: 'an error occured',
+          });
+
+          return res.redirect('back');
+    }
+	
 })
 
 router.get('/register', function (req, res) {

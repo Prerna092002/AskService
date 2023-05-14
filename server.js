@@ -15,6 +15,7 @@ const passportLocal = require('./config/passport-local');
 //ASSETS
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
 
@@ -30,7 +31,7 @@ app.use(session({
   },
   store: MongoStore.create(
     {
-      mongoUrl: 'mongodb+srv://kashishgoyal961:PiVqOx22ekls2jkI@cluster905.4zypzwn.mongodb.net/AskService',
+      mongoUrl: 'mongodb+srv://KUNAL:KUNAL9900@mernapp.oaibt56.mongodb.net/AskService',
       dbName: 'db'
     },
     function (err) {
