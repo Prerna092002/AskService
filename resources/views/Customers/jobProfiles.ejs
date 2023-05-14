@@ -157,7 +157,17 @@
 
             </div>
             <div class="card-footer  text-center  bg-primary">
-              <a href="#"><large class="text-white detail-btn">Hire</large></a>
+              <a type="none">
+                
+                <form action="/sendMail" method="post">
+                  <input type="text" style="display: none;" name="email" value=<%= job.email %> >
+                  <button>
+
+                    <large class="text-white detail-btn">Hire</large>
+                  </button>
+                </form>
+              
+              </a>
             </div>
           </div>
         </div>
