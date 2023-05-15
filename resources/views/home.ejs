@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>AskService | Home</title>
 
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -21,136 +21,103 @@
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/css/app.css" />
   <link rel="stylesheet" href="/css/footer.css" />
+  <link type="image/png" sizes="16x16" rel="icon"
+    href="https://img.icons8.com/external-flat-wichaiwi/64/external-engineer-jobs-and-occupations-flat-wichaiwi.png">
+
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></head> -->
   <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 
 <body>
-  <!-- <h1>Hello i am here</h1> -->
   <div class="Maincontainer">
-    <nav class="container flex items-center justify-between navbar">
-      <div>
-        <!-- <img src="/im/AskServiceLogo.png" alt="logo" width="80" /> -->
-        <h2>AskService</h2>
-      </div>
-      <div>
-        <ul class="flex items-center">
-          <li class="ml-10 mt-3">
-            <h5><a href="/cHome" class="links">Hire</a></h5>
-          </li>
-          <li class="ml-10 mt-3">
-            <h5><a href="/wHome" class="links">Apply for job</a></h5>
-          </li>
-          <li class="ml-10 mt-3">
-            <h5><a href="/about" class="links">About</a></h5>
-          </li>
-          <% if(locals.user){%>
-            <li class="ml-10 mt-3">
-              <h5><a href="/profile/<%=locals.user._id%>" class="links">
-                  <%=locals.user.name%>
-                </a></h5>
-            </li>
-            <% }else{ %>
-              <li class="ml-10 mt-3">
-                <h5><a href="/login" class="links">Login</a></h5>
-              </li>
-              <% }%>
-                <% if(locals.user){%>
-                  <li class="ml-10 mt-3">
-                    <h5>
-                      <form action="/logout">
-                        <button>Logout</button>
-                      </form>
-                    </h5>
-                  </li>
-                  <% } %>
-        </ul>
-      </div>
-    </nav>
 
-    <div style="background-color:beige; height: 450px; ">
-      <div style="width: 50vw; float: left; text-align: center;">
-        <br><br><br><br>
-        <p style="font-size: 50px; color: blue; font-weight: bolder;">Comfort delivered to your doorsteps</p>
+    <%-include('./partials/navbar') %>
 
-        <p style="font-size: 20px;"> One-step solution for all your household needs</p>
-        <br>
-        <button class="btn-primary get-started-btn">Get Started</button>
-      </div>
-      <div style="float: right;">
-        <img class="card-img"
-          src="https://img.freepik.com/free-photo/asian-plumber-blue-overalls-clearing-blockage-drain_1098-17773.jpg"
-          alt="Home Cleaning" style="height: 450px; width: 700px; ">
-      </div>
-    </div>
-    <div style="height: 450px; background: lightgray;">
-      <br><br>
-      <p style="color: blue; font-size: 50px; text-align: center;"><span style="font-weight: bolder;">WHAT</span> WE DO
-      </p>
-      <br><br>
-      <div id="iconshome-main">
-        <div>
-          <i style="font-size: 80px; color: blue;" class="fas fa-home"></i>
-          <br><BR>
-          <h6 style="color: blue;">HOUSE MAID</h6>
-          <P>Domestic reliable House maid Services</P>
-        </div>
-        <div>
-          <i style="font-size: 80px; color: blue;" class="fas fa-baby-carriage"></i>
-          <br><br>
-          <h6 style="color: blue;">BABY CARE</h6>
-          <P>Baby sitting with Experience care taker</P>
-        </div>
-        <div>
-          <i style="font-size: 80px; color: blue;" class="fas fa-bed"></i>
-          <br><br>
-          <h6 style="color: blue;">Patient Care</h6>
-          <P>Regular medications and other needs</P>
-        </div>
-        <div>
-          <i style="font-size: 80px; color: blue;" class="fas fa-cutlery"></i>
-          <br><br>
-          <h6 style="color: blue;">Cook</h6>
-          <p>Variety of foods with proper clenliness</p>
-        </div>
+      <div style="background-color:beige; height: 450px; ">
+        <div style="width: 50vw; float: left; text-align: center;">
+          <br><br><br><br>
+          <p style="font-size: 50px; color: blue; font-weight: bolder;">Comfort delivered to your doorsteps</p>
 
-
-      </div>
-    </div>
-    <div style="height: 750px; background: beige;">
-      <br><br>
-      <p style="color: blue; font-size: 50px; text-align: center;">OUR <span
-          style="font-weight: bolder; ">POLICES</span> </p>
-      <div id="iconshome-main">
-        <div>
-          <img style="height: 400px; width: 300px;" src="/im/SafeAndReliable">
-          <button class="policy-btn btn-primary">SAFE</button>
-          <br><br>
-          <h4>SAFE AND RELIABLE</h4>
+          <p style="font-size: 20px;"> One-step solution for all your household needs</p>
           <br>
-          <p>Your safety is our first priority. </p>
-          <p> We do a thorough background check of every maid</p>
+          <button class="btn-primary get-started-btn">Get Started</button>
         </div>
-        <div>
-          <img style="height: 400px; width: 300px;" src="/im/Replacement">
-          <button class="policy-btn btn-primary">FREE</button>
-          <br><br>
-          <h4>FREE REPLACEMENT</h4>
-          <p>If the maid leaves for any reason within</p>
-          <p> 3 months of joining, we will replace the maid.</p>
-        </div>
-        <div>
-          <img style="height: 400px; width: 300px;" src="/im/MultipleOptions">
-          <button class="policy-btn btn-primary">OPTIONS</button>
-          <br><br>
-          <h4>MULTIPLE OPTIONS</h4>
-          <p>Watch as many profiles as you want. </p>
-          <p>Select only the one you find best.</p>
+        <div style="float: right;">
+          <img class="card-img"
+            src="https://img.freepik.com/free-photo/asian-plumber-blue-overalls-clearing-blockage-drain_1098-17773.jpg"
+            alt="Home Cleaning" style="height: 450px; width: 700px; ">
         </div>
       </div>
-    </div>
-    <div class="footer">
-      <%- (include('footer')) %>
-    </div>
+      <div style="height: 450px; background: lightgray;">
+        <br><br>
+        <p style="color: blue; font-size: 50px; text-align: center;"><span style="font-weight: bolder;">WHAT</span> WE
+          DO
+        </p>
+        <br><br>
+        <div id="iconshome-main">
+          <div>
+            <i style="font-size: 80px; color: blue;" class="fas fa-home"></i>
+            <br><BR>
+            <h6 style="color: blue;">HOUSE MAID</h6>
+            <P>Domestic reliable House maid Services</P>
+          </div>
+          <div>
+            <i style="font-size: 80px; color: blue;" class="fas fa-baby-carriage"></i>
+            <br><br>
+            <h6 style="color: blue;">BABY CARE</h6>
+            <P>Baby sitting with Experience care taker</P>
+          </div>
+          <div>
+            <i style="font-size: 80px; color: blue;" class="fas fa-bed"></i>
+            <br><br>
+            <h6 style="color: blue;">Patient Care</h6>
+            <P>Regular medications and other needs</P>
+          </div>
+          <div>
+            <i style="font-size: 80px; color: blue;" class="fas fa-cutlery"></i>
+            <br><br>
+            <h6 style="color: blue;">Cook</h6>
+            <p>Variety of foods with proper clenliness</p>
+          </div>
+
+
+        </div>
+      </div>
+      <div style="height: 750px; background: beige;">
+        <br><br>
+        <p style="color: blue; font-size: 50px; text-align: center;">OUR <span
+            style="font-weight: bolder; ">POLICES</span> </p>
+        <div id="iconshome-main">
+          <div>
+            <img style="height: 400px; width: 300px;" src="/im/SafeAndReliable">
+            <button class="policy-btn btn-primary">SAFE</button>
+            <br><br>
+            <h4>SAFE AND RELIABLE</h4>
+            <br>
+            <p>Your safety is our first priority. </p>
+            <p> We do a thorough background check of every maid</p>
+          </div>
+          <div>
+            <img style="height: 400px; width: 300px;" src="/im/Replacement">
+            <button class="policy-btn btn-primary">FREE</button>
+            <br><br>
+            <h4>FREE REPLACEMENT</h4>
+            <p>If the maid leaves for any reason within</p>
+            <p> 3 months of joining, we will replace the maid.</p>
+          </div>
+          <div>
+            <img style="height: 400px; width: 300px;" src="/im/MultipleOptions">
+            <button class="policy-btn btn-primary">OPTIONS</button>
+            <br><br>
+            <h4>MULTIPLE OPTIONS</h4>
+            <p>Watch as many profiles as you want. </p>
+            <p>Select only the one you find best.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <%-include('./partials/footer') %>
+      </div>
   </div>
 
 

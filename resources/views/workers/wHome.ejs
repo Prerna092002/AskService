@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>AskService</title>
+  <title>AskService | Workers</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -24,10 +24,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/css/worker.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+  <link type="image/png" sizes="16x16" rel="icon"
+    href="https://img.icons8.com/external-flat-wichaiwi/64/external-engineer-jobs-and-occupations-flat-wichaiwi.png">
   <style>
     body {
       background-color: #f2f2f2;
       font-family: Arial, sans-serif;
+      max-width: 100vw;
     }
 
     h1 {
@@ -81,90 +86,51 @@
 </head>
 
 <body>
-  <div class="container bcontent">
+  <div class="mainContainer">
+    <div class="container bcontent">
+      <%-include('../partials/navbar') %>
 
-    <nav class="container flex items-center justify-between navbar">
-      <div>
-        <img src="/im/AskServiceLogo.png" alt="logo" width="80" />
-        <h2>AskService</h2>
-      </div>
-      <div>
-        <ul class="flex items-center">
-          <li class="ml-10 mt-3">
-          <li class="ml-10 mt-3">
-            <h5><a href="/cHome" class="links">Hire</a></h5>
-          </li>
-          <li class="ml-10 mt-3">
-            <h5><a href="/wHome" class="links">Apply for job</a></h5>
-          </li>
-          <li class="ml-10 mt-3">
-            <h5><a href="/about" class="links">About</a></h5>
-          </li>
-          <% if(locals.user){%>
-            <li class="ml-10 mt-3">
-              <h5><a href="/profile" class="links">
-                  <%=locals.user.name%>
-                </a></h5>
-            </li>
-            <% }else{ %>
-              <li class="ml-10 mt-3">
-                <h5><a href="/login" class="links">Login</a></h5>
-              </li>
-              <% }%>
-                <% if(locals.user){%>
-                  <li class="ml-10 mt-3">
-                    <h5>
-                      <form action="/logout">
-                        <button>Logout</button>
-                      </form>
-                    </h5>
-                  </li>
-                  <% } %>
-        </ul>
-      </div>
-    </nav>
-
-
-
-    <div style="text-align: center; color: blue;">
-      <span style="font-size:75px; font-weight:bolder">APPLY FOR JOB</span>
-      <!-- <span style="font-size:75px; font-weight: 100;">ONLINE</span> -->
-    </div>
-    <hr />
-
-    <div class="form-style-10">
-      <h1>Fill the below details<span></span></h1>
-      <form class="details" method="post" action="/applyjob">
-        <div class="section"><span>1</span>First Name & Address</div>
-        <div class="inner-wrap">
-          <label>Your Full Name <input type="text" name="username" /></label>
-          <label>Address <input type="text" name="address"></input></label>
+        <div style="text-align: center; color: blue;">
+          <span style="font-size:75px; font-weight:bolder">APPLY FOR JOB</span>
+          <!-- <span style="font-size:75px; font-weight: 100;">ONLINE</span> -->
         </div>
+        <hr />
 
-        <div class="section"><span>2</span>Email & Phone</div>
-        <div class="inner-wrap">
-          <label>Email Address <input type="email" name="email" /></label>
-          <label>Phone Number <input type="text" name="contact" /></label>
+        <div class="form-style-10">
+          <h1>Fill the below details<span></span></h1>
+          <form class="details" method="post" action="/applyjob">
+            <div class="section"><span>1</span>First Name & Address</div>
+            <div class="inner-wrap">
+              <label>Your Full Name <input type="text" name="username" /></label>
+              <label>Address <input type="text" name="address"></input></label>
+            </div>
+
+            <div class="section"><span>2</span>Email & Phone</div>
+            <div class="inner-wrap">
+              <label>Email Address <input type="email" name="email" /></label>
+              <label>Phone Number <input type="text" name="contact" /></label>
+            </div>
+
+            <div class="section"><span>3</span>Personal info</div>
+            <div class="inner-wrap">
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="role">
+                <option selected>Applying for</option>
+                <option value="ElderlyCare">Elderly Care</option>
+                <option value="PateintCare">Pateint Care</option>
+                <option value="HomeCleaning">Home Cleaning</option>
+                <option value="Cook">Cook</option>
+                <option value="BabyCaretaker">Baby Caretaker</option>
+              </select>
+              <!-- <label>Applying for?<input type="text" name="role" /></label> -->
+              <label>Age<input type="number" name="age" /></label>
+              <label>Years of experince<input type="number" name="exp" /></label>
+              <label>Expected Income<input type="number" name="income" /></label>
+              <input type="file" placeholder="profile picture" name="avatar" class="input file" id="avatar">
+              <br>
+            </div>
+            <button>Submit</button>
+          </form>
         </div>
-
-        <div class="section"><span>3</span>Personal info</div>
-        <div class="inner-wrap">
-          <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="role">
-            <option selected>Applying for</option>
-            <option value="ElderlyCare">Elderly Care</option>
-            <option value="PateintCare">Pateint Care</option>
-            <option value="HomeCleaning">Home Cleaning</option>
-            <option value="Cook">Cook</option>
-            <option value="BabyCaretaker">Baby Caretaker</option>
-          </select>
-          <!-- <label>Applying for?<input type="text" name="role" /></label> -->
-          <label>Age<input type="number" name="age" /></label>
-          <label>Years of experince<input type="number" name="exp" /></label>
-          <label>Expected Income<input type="number" name="income" /></label>
-
-        </div>
-        <button>Submit</button>
-      </form>
     </div>
 </body>
 

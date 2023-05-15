@@ -20,87 +20,85 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="/css/profile.css" />
+    <link type="image/png" sizes="16x16" rel="icon"
+        href="https://img.icons8.com/external-flat-wichaiwi/64/external-engineer-jobs-and-occupations-flat-wichaiwi.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <nav class="container flex items-center justify-between navbar">
-        <div>
-            <!-- <img src="/im/AskServiceLogo.png" alt="logo" width="80" /> -->
-            <h2>AskService</h2>
-        </div>
-        <div>
-            <ul class="flex items-center">
-                <li class="ml-10 mt-3">
-                <li class="ml-10 mt-3">
-                    <h5><a href="/cHome" class="links">Hire</a></h5>
-                </li>
-                <li class="ml-10 mt-3">
-                    <h5><a href="/wHome" class="links">Apply for job</a></h5>
-                </li>
-                <li class="ml-10 mt-3">
-                    <h5><a href="/about" class="links">About</a></h5>
-                </li>
-                <% if(locals.user){%>
-                    <li class="ml-10 mt-3">
-                        <h5><a href="/profile" class="links">
-                                <%=locals.user.name%>
-                            </a></h5>
-                    </li>
-                    <% }else{ %>
-                        <li class="ml-10 mt-3">
-                            <h5><a href="/login" class="links">Login</a></h5>
-                        </li>
-                        <% }%>
-                            <% if(locals.user){%>
-                                <li class="ml-10 mt-3">
-                                    <h5>
-                                        <form action="/logout">
-                                            <button>Logout</button>
-                                        </form>
-                                    </h5>
-                                </li>
-                                <% } %>
-            </ul>
-        </div>
-    </nav>
+    <%-include('../partials/navbar') %>
 
-    <div style="text-align: center; color: blue;">
-        <span style="font-size:75px; font-weight:bolder; text-transform:uppercase;">
-            <%= user.name %>'S
-        </span>
-        <span style="font-size:75px; font-weight: 100;">Profile</span>
-    </div>
-    <hr />
-
-    <div class="card" style="width: 76vw; height: 60vh; margin: 0 auto; border:none;">
-        <div class="row no-gutters">
-            <div style="width: 38vw; height: 60vh; background-color: rgb(253, 253, 253);">
-                <img class="card-img" src="https://i.pinimg.com/236x/47/5a/86/475a86177aeedacf8dc7f5e2b4eff61f.jpg"
-                    alt="user img"
-                    style="width: 25vw; height: 40vh; border:2px solid white; border-radius:50%; margin: 0 auto; margin-top:50px;">
+        <div style="text-align: center; color: rgb(0, 0, 0);">
+            <span style="font-size:75px; font-weight:bolder; text-transform:uppercase;">
+                <%= user.name %>'S
+            </span>
+            <span style="font-size:75px; font-weight: 100;">Profile</span>
+        </div>
+        <hr />
+        <div class="container">
+            <div class="card">
+                <img src="<%=user.avatar %> " alt="user.username" style="width:100%">
+                <h1>
+                    <%=user.name %>
+                </h1>
+                <p class="title">
+                    <%=user.role%>
+                </p>
+                <p>
+                    <%=user.email %>
+                </p>
+                <p>
+                <form action="/logout">
+                    <button>Logout</button>
+                </form>
+                </p>
             </div>
-            <div style="width: 37vw; height: 60vh; background-color: rgb(200, 200, 200);">
-                <div class="card-body">
-                    <br>
-                    <br>
-                    <h3 class="card-title" style="color: blue;">Name : <%= user.name %>
-                    </h3>
-                    <p class="card-text" style="font-size: 20px;">Email : <%= user.email %>
-                    </p>
-                    <p class="card-text" style="font-size: 20px;">Role : <%= user.role %>
-                    </p>
-                    <form action="/updateUser">
-                        <button style="color:white; background-color: black;"> Update Profile</button>
+
+            <div class="card" style="width: 37vw; height: 60vh; background-color: rgb(200, 200, 200);">
+                <div class="updateForm">
+                    <form action="/updateUser/<%=user._id %>" method="post" enctype="multipart/form-data">
+                        <label for="username" class="label">Name </label>
+                        <br>
+                        <input type="text" value="<%= user.name %>" id="username" name="name" class="input">
+                        <br>
+                        <label for="email" class="label">Email</label>
+                        <br>
+                        <input type="email" value="<%= user.email %>" id="email" name="email" class="input">
+                        <br>
+                        <label for="avatar" class="label">Avatar</label>
+                        <br>
+                        <input type="file" placeholder="profile picture" name="avatar" class="input file" id="avatar">
+                        <br>
+                        <button type="submit" class="btn"> Update Profile</button>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
+
+        <!-- <div class="card" style="width: 76vw; height: 60vh; margin: 0 auto; border:none;">
+        <div class="row no-gutters">
+            <div style="width: 38vw; height: 60vh; background-color: rgb(253, 253, 253);">
+                <img class="card-img" src="<%=user.avatar %>" alt="user img"
+                    style="width: 30vw; height: 50vh; border:2px solid white; border-radius:0%; margin: 0 auto; margin-top:50px;">
+            </div>
+            <div style="width: 37vw; height: 60vh; background-color: rgb(200, 200, 200);">
+                <div class="card-body">
+                    <form action="/updateUser/<%=user._id %>" method="post" enctype="multipart/form-data">
+                        <label for="username">Name: </label>
+                        <input type="text" value="<%= user.name %>" id="username" name="name">
+                        <br>
+                        <label for="email">Email: </label>
+                        <input type="email" value="<%= user.email %>" id="email" name="email">
+                        <br>
+                        <input type="file" placeholder="profile picture" name="avatar">
+                        <button style="color:white; background-color: black;" type="submit"> Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> -->
 
 </body>
 

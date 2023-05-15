@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>AskService</title>
+  <title>AskService | Customers</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,7 +18,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/app.css" />
 
+  <link type="image/png" sizes="16x16" rel="icon"
+    href="https://img.icons8.com/external-flat-wichaiwi/64/external-engineer-jobs-and-occupations-flat-wichaiwi.png">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -29,161 +32,122 @@
 <body>
   <div class="container bcontent">
 
-    <nav class="container flex items-center justify-between navbar">
-      <div>
-        <!-- <img src="/im/AskServiceLogo.png" alt="logo" width="80" /> -->
-        <h2>AskService</h2>
+    <%-include('../partials/navbar') %>
+
+
+      <div style="text-align: center; color: blue;">
+        <span style="font-size:75px; font-weight:bolder">BOOK </span>
+        <span style="font-size:75px; font-weight: 100;">ONLINE</span>
       </div>
-      <div>
-        <ul class="flex items-center">
-          <li class="ml-10 mt-3">
-          <li class="ml-10 mt-3">
-            <h5><a href="/cHome" class="links">Hire</a></h5>
-          </li>
-          <li class="ml-10 mt-3">
-            <h5><a href="/wHome" class="links">Apply for job</a></h5>
-          </li>
-          <li class="ml-10 mt-3">
-            <h5><a href="/about" class="links">About</a></h5>
-          </li>
-          <% if(locals.user){%>
-            <li class="ml-10 mt-3">
-              <h5><a href="/profile" class="links">
-                  <%=locals.user.name%>
-                </a></h5>
-            </li>
-            <% }else{ %>
-              <li class="ml-10 mt-3">
-                <h5><a href="/login" class="links">Login</a></h5>
-              </li>
-              <% }%>
-                <% if(locals.user){%>
-                  <li class="ml-10 mt-3">
-                    <h5>
-                      <form action="/logout">
-                        <button>Logout</button>
-                      </form>
-                    </h5>
-                  </li>
-                  <% } %>
-        </ul>
-      </div>
-    </nav>
+      <hr />
 
 
-    <div style="text-align: center; color: blue;">
-      <span style="font-size:75px; font-weight:bolder">BOOK </span>
-      <span style="font-size:75px; font-weight: 100;">ONLINE</span>
-    </div>
-    <hr />
+      <!-- Home Cleaning -->
+      <div class="card" style="width: 1100px; height: 315px;">
+        <div class="row no-gutters">
+          <div class="col-sm-5">
+            <img class="card-img" src="/im/Cleaning" alt="Home Cleaning">
+          </div>
+          <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
+            <div class="card-body">
+              <br>
+              <br>
+              <h3 class="card-title" style="color: blue;">Home Cleaning</h3>
+              <p class="card-text" style="font-size: 20px;">Neat And Clean</p>
+              <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
 
 
-    <!-- Home Cleaning -->
-    <div class="card" style="width: 1100px; height: 315px;">
-      <div class="row no-gutters">
-        <div class="col-sm-5">
-          <img class="card-img" src="/im/Cleaning" alt="Home Cleaning">
-        </div>
-        <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
-          <div class="card-body">
-            <br>
-            <br>
-            <h3 class="card-title" style="color: blue;">Home Cleaning</h3>
-            <p class="card-text" style="font-size: 20px;">Neat And Clean</p>
-            <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
-
-
-            <a href="/jobProfile/HomeCleaning" class="btn btn-primary">View Profiles</a>
+              <a href="/jobProfile/HomeCleaning" class="btn btn-primary">View Profiles</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <br><br><br>
+      <br><br><br>
 
-    <div class="card" style="width: 1100px; height: 315px;">
-      <div class="row no-gutters">
-        <div class="col-sm-5">
-          <img class="card-img" src="/im/Cook" alt="Cook">
-        </div>
-        <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
-          <div class="card-body">
-            <br>
-            <br>
-            <h3 class="card-title" style="color: blue;">Cook</h3>
-            <p class="card-text" style="font-size: 20px;">Excellent Taste And Variety</p>
-            <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
+      <div class="card" style="width: 1100px; height: 315px;">
+        <div class="row no-gutters">
+          <div class="col-sm-5">
+            <img class="card-img" src="/im/Cook" alt="Cook">
+          </div>
+          <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
+            <div class="card-body">
+              <br>
+              <br>
+              <h3 class="card-title" style="color: blue;">Cook</h3>
+              <p class="card-text" style="font-size: 20px;">Excellent Taste And Variety</p>
+              <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
 
 
-            <a href="/jobProfile/Cook" class="btn btn-primary">View Profiles</a>
+              <a href="/jobProfile/Cook" class="btn btn-primary">View Profiles</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <br><br><br>
+      <br><br><br>
 
-    <div class="card" style="width: 1100px; height: 315px;">
-      <div class="row no-gutters">
-        <div class="col-sm-5">
-          <img class="card-img" src="/im/BabyCareTaker" alt="BabyCareTaker">
-        </div>
-        <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
-          <div class="card-body">
-            <br>
-            <br>
-            <h3 class="card-title" style="color: blue;">Baby CareTaker</h3>
-            <p class="card-text" style="font-size: 20px;">Provide Safe Educational Environment For Children</p>
-            <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
+      <div class="card" style="width: 1100px; height: 315px;">
+        <div class="row no-gutters">
+          <div class="col-sm-5">
+            <img class="card-img" src="/im/BabyCareTaker" alt="BabyCareTaker">
+          </div>
+          <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
+            <div class="card-body">
+              <br>
+              <br>
+              <h3 class="card-title" style="color: blue;">Baby CareTaker</h3>
+              <p class="card-text" style="font-size: 20px;">Provide Safe Educational Environment For Children</p>
+              <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
 
 
-            <a href="/jobProfile/BabyCaretaker" class="btn btn-primary">View Profiles</a>
+              <a href="/jobProfile/BabyCaretaker" class="btn btn-primary">View Profiles</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <br><br><br>
+      <br><br><br>
 
-    <div class="card" style="width: 1100px; height: 315px;">
-      <div class="row no-gutters">
-        <div class="col-sm-5">
-          <img class="card-img" src="/im/PatientCare" alt="PateintCare">
-        </div>
-        <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
-          <div class="card-body">
-            <br>
-            <br>
-            <h3 class="card-title" style="color: blue;">Pateint Care</h3>
-            <p class="card-text" style="font-size: 20px;">Proper Care Medication And Nursing Home</p>
-            <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
+      <div class="card" style="width: 1100px; height: 315px;">
+        <div class="row no-gutters">
+          <div class="col-sm-5">
+            <img class="card-img" src="/im/PatientCare" alt="PateintCare">
+          </div>
+          <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
+            <div class="card-body">
+              <br>
+              <br>
+              <h3 class="card-title" style="color: blue;">Pateint Care</h3>
+              <p class="card-text" style="font-size: 20px;">Proper Care Medication And Nursing Home</p>
+              <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
 
 
-            <a href="/jobProfile/PateintCare" class="btn btn-primary">View Profile</a>
+              <a href="/jobProfile/PateintCare" class="btn btn-primary">View Profile</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <br><br><br>
+      <br><br><br>
 
-    <div class="card" style="width: 1100px; height: 315px;">
-      <div class="row no-gutters">
-        <div class="col-sm-5">
-          <img class="card-img" src="/im/ElderlyCare" alt="ElderlyCare">
-        </div>
-        <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
-          <div class="card-body">
-            <br>
-            <br>
-            <h3 class="card-title" style="color: blue;">Elderly Care</h3>
-            <p class="card-text" style="font-size: 20px;">Adult Day Care And Long Term Care</p>
-            <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
+      <div class="card" style="width: 1100px; height: 315px;">
+        <div class="row no-gutters">
+          <div class="col-sm-5">
+            <img class="card-img" src="/im/ElderlyCare" alt="ElderlyCare">
+          </div>
+          <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
+            <div class="card-body">
+              <br>
+              <br>
+              <h3 class="card-title" style="color: blue;">Elderly Care</h3>
+              <p class="card-text" style="font-size: 20px;">Adult Day Care And Long Term Care</p>
+              <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
 
 
-            <a href="/jobProfile/ElderlyCare" class="btn btn-primary">View Profiles</a>
+              <a href="/jobProfile/ElderlyCare" class="btn btn-primary">View Profiles</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <br><br><br>
+      <br><br><br>
 
   </div>
 

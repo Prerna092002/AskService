@@ -6,18 +6,22 @@ const passport = require('passport');
 const nodemailer = require('nodemailer');
 const notifier = require('node-notifier');
 
+// for removing the file avatar
+const path = require('path');
+const fs = require('fs');
+
 var transporter = nodemailer.createTransport({
-	service: 'gmail',
-	auth: {
-		user: 'serviceask54@gmail.com',
-		pass: 'oexmuvpzygahfchw'
-	},
-	port: 465,
-	host: 'smtp.gmail.com',
-	secure: false
+    service: 'gmail',
+    auth: {
+        user: 'serviceask54@gmail.com',
+        pass: 'oexmuvpzygahfchw'
+    },
+    port: 465,
+    host: 'smtp.gmail.com',
+    secure: false
 });
 
-
+// home page
 router.get('/', function (req, res) {
     return res.render('home');
 });
@@ -35,38 +39,39 @@ router.get('/jobProfile/:role', async function (req, res) {
     const role = req.params.role;
     return res.render('./Customers/jobProfiles', {
         jobs: jobs,
-        role:role
+        role: role
     });
 })
 
-router.post('/sendMail', async function (req, res) {
-
-    const {email} = req.body;
-    console.log(email)
+router.post('/sendMail', passport.checkauthentication, async function (req, res) {
+    const { email } = req.body;
+    const job = await Job.findOne({ email: email });
+    console.log(email);
     try {
         let result = await transporter.sendMail({
             from: 'serviceask54@gmail.com', // sender address
             to: email, // list of receivers
             subject: 'You have new invitation for a job', // Subject line
-            text: `email: ${req.user.email}`
+            text: `Hey ${job.username}! we're exited to tell you that ${req.user.name} just hired you` // Message
         });
-         notifier.notify({
+        console.log('email sent successfully');
+        notifier.notify({
             title: 'message',
-            message: 'email sent successfully',
+            message: `email seuccesfully sent to ${job.username}`,
             sound: true
-          });
+        });
 
-          return res.redirect('back');
-          
+        return res.redirect('back');
+
     } catch (e) {
         console.log(e);
-         notifier.notify({
+        notifier.notify({
             title: 'an error occured',
-          });
+        });
 
-          return res.redirect('back');
+        return res.redirect('back');
     }
-	
+
 })
 
 router.get('/register', function (req, res) {
@@ -138,13 +143,12 @@ router.get('/chatbot', function (req, res) {
     return res.render('./workers/chatbot');
 })
 
-router.get('/updatePass', function (req, res) {
 
-});
 
 router.post('/applyjob', async function (req, res) {
     try {
         const job = await Job.create(req.body);
+
         console.log(job);
         return res.redirect('./');
 
@@ -167,17 +171,44 @@ router.get('/profile/:id', async function (req, res) {
     });
 });
 
-// router.get('./updateUser', async function (req, res) {
-//     const user = await User.findById(req.params.id);
+router.post('/updateUser/:id', async function (req, res) {
+    let id = req.params.id;
+    if (req.user.id == req.params.id) {
+        try {
+            // finding the user of which we need to update the details.
+            let user = await User.findById(req.params.id);
+            // funciton from user schema
+            // multer provides 2 things with req--> for params req.body like we have before n=but now they are via multer as our parser is not able to parse multipart data.
+            // ans one is req,file-> wholde detail about file which is uploaded.
+            User.uploadedAvatar(req, res, function (err) {
+                if (err) {
+                    console.log("multer error in uploading the avatar");
+                    return;
+                }
+                // updating
+                user.name = req.body.name;
+                user.email = req.body.email;
+                if (req.file) {
+                    // if user alread had an avatar and and that file exists in our system
+                    if (user.avatar && fs.existsSync(path.join(__dirname, "..", user.avatar))) {
+                        fs.unlinkSync(path.join(__dirname, "..", user.avatar));
+                    }
 
-//     if (!user) {
-//         console.log("user not found");
-//         return;
-//     }
-
-//     return res.render('./Customers/profileUpdate', {
-//         user: user,
-//     });
-// })
+                    // setting the path of avatar inside schema
+                    user.avatar = User.avatarPath + "/" + req.file.filename;
+                    console.log("pp updated");
+                }
+                user.save();
+                return res.redirect(`/profile/${id}`);
+            })
+        } catch (err) {
+            // req.flash('error', "error in updating the user");
+            console.log(err);
+            return;
+        }
+    } else {
+        return re.status(401).send("unauthorize");
+    }
+});
 
 module.exports = router;
