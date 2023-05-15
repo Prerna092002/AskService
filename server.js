@@ -8,6 +8,9 @@ const expressLayout = require('express-ejs-layouts');
 
 const db = require('./config/mongoose');
 
+app.use('/uploads', express.static(__dirname + '/uploads'));
+
+
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local');

@@ -6,12 +6,14 @@ body {
 .Maincontainer {
   height: 100vh;
   max-width: 100vw;
-  background-color: grey;
+  background-color:white;
 }
 
 .container {
-  background-color: blue;
-  color: white;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  position: sticky;
+  top: 0;
 }
 
 .width-100 {
@@ -20,15 +22,10 @@ body {
 }
 
 .navbar {
-  height: 10%;
+  height: 9%;
   max-width: 100%;
   margin-left: 0px;
   margin-right: 0px;
-}
-
-.links {
-  color: white;
-  text-decoration: none;
 }
 
 .cora {
@@ -42,18 +39,20 @@ body {
   transform: translate(-50%, -50%);
   color: whitesmoke;
 }
+
 .bcontent {
   margin-top: 10px;
 }
-.get-started-btn{
- 
+
+.get-started-btn {
+
   display: inline-block;
   outline: none;
   cursor: pointer;
   font-size: 14px;
   line-height: 1;
   border-radius: 500px;
-  transition-property: background-color,border-color,color,box-shadow,filter;
+  transition-property: background-color, border-color, color, box-shadow, filter;
   transition-duration: .3s;
   border: 1px solid transparent;
   letter-spacing: 2px;
@@ -66,28 +65,50 @@ body {
   color: #fff;
   background-color: blue;
   height: 48px;
- 
+
 
 }
-#iconshome-main{
+
+
+#iconshome-main {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  
+
 }
-#iconshome-main div p{
+
+#iconshome-main div p {
   word-wrap: break-word;
   color: blue;
 }
-.policy-btn{
-  margin-top:-380px;
-  
+
+.policy-btn {
+  margin-top: -380px;
+
   font-size: 20px;
-  padding:3px 40px;
+  padding: 3px 40px;
   text-align: center;
   margin-left: 100px;
 }
-#iconshome-main div h4{
+
+#iconshome-main div h4 {
   color: blue;
   text-align: center;
+}
+
+.topImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  display:inline-block;
+}
+
+.links{
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  margin-left: 4px;
 }

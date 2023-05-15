@@ -21,6 +21,7 @@
     "express-session": "^1.17.3",
     "flash": "^1.1.0",
     "mongoose": "^7.0.3",
+    "multer": "^1.4.5-lts.1",
     "node-notifier": "^10.0.1",
     "nodemailer": "^6.9.2",
     "nodemon": "^2.0.22",

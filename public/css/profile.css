@@ -1,0 +1,74 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.input {
+  width: 80%;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  color: black;
+  padding-left: 10px;
+  font-size: 17px;
+}
+
+.updateForm {
+  background-color: rgb(205, 205, 190);
+  height: 100%;
+  color: black;
+  padding-top: 40px;
+}
+
+.label{
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.btn {
+  width: 80%;
+  color: white;
+  margin-top: 10px;
+  background-color: green;
+  border: none;
+  border-radius: 10px;
+}
+
+.file {
+  margin-left: 100px;
+}
