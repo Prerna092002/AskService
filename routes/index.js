@@ -199,7 +199,7 @@ router.post('/updateUser/:id', async function (req, res) {
                     }
 
                     // setting the path of avatar inside schema
-                    user.avatar = User.avatarPath + "/" + req.file.filename;
+                    user.avatar  = User.avatarPath + "/" + req.file.filename;
                     console.log("pp updated");
                 }
                 user.save();
