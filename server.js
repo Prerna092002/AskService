@@ -4,6 +4,9 @@ const express = require("express");
 const app = express();
 const path = require('path');
 
+const flash = require('connect-flash');
+const customWare = require('./config/middelware');
+
 const expressLayout = require('express-ejs-layouts');
 
 const db = require('./config/mongoose');
@@ -47,6 +50,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+
+app.use(flash());
+app.use(customWare.setFlash);
 
 
 

@@ -55,6 +55,7 @@ router.post('/sendMail', passport.checkauthentication, async function (req, res)
             text: `Hey ${job.username}! we're exited to tell you that ${req.user.name} just hired you` // Message
         });
         console.log('email sent successfully');
+        req.flash('success', "Email sent successfully");
         notifier.notify({
             title: 'message',
             message: `email seuccesfully sent to ${job.username}`,
@@ -118,6 +119,7 @@ router.post('/login', passport.authenticate(
         failureRedirect: '/login',
     }
 ), function (req, res) {
+    req.flash('success', "Logged in successfully");
     console.log("session connected");
     return res.redirect('./');
 });
@@ -126,6 +128,7 @@ router.post('/login', passport.authenticate(
 router.get('/logout', function (req, res, next) {
     req.logout(function (err) {
         if (err) { return next(err); }
+    req.flash('success', "Logged out successfully");
         res.redirect('/');
     });
 })
@@ -150,6 +153,7 @@ router.post('/applyjob', async function (req, res) {
         const job = await Job.create(req.body);
 
         console.log(job);
+        req.flash('success', "Successfully applied for the job");
         return res.redirect('./');
 
     } catch (e) {
@@ -195,10 +199,11 @@ router.post('/updateUser/:id', async function (req, res) {
                     }
 
                     // setting the path of avatar inside schema
-                    user.avatar = User.avatarPath + "/" + req.file.filename;
+                    user.avatar  = User.avatarPath + "/" + req.file.filename;
                     console.log("pp updated");
                 }
                 user.save();
+                req.flash('success', "Profile has been updated");
                 return res.redirect(`/profile/${id}`);
             })
         } catch (err) {

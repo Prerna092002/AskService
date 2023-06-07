@@ -15,7 +15,9 @@ const jobSchema = new Schema({
     income: { type: Number },
     avatar: {
         type: String,
-    }
+    },
+    isHired: { type: Boolean, required: true , default: false },
+
 }, { timestamps: true });
 
 let storage = multer.diskStorage({
