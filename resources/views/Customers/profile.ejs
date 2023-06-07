@@ -25,6 +25,9 @@
     <link type="image/png" sizes="16x16" rel="icon"
         href="https://img.icons8.com/external-flat-wichaiwi/64/external-engineer-jobs-and-occupations-flat-wichaiwi.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 
 <body>
@@ -39,21 +42,26 @@
         <hr />
         <div class="container">
             <div class="card">
-                <img src="<%=user.avatar %> " alt="user.username" style="width:100%">
-                <h1>
-                    <%=user.name %>
-                </h1>
-                <p class="title">
-                    <%=user.role%>
-                </p>
-                <p>
-                    <%=user.email %>
-                </p>
-                <p>
-                <form action="/logout">
-                    <button>Logout</button>
-                </form>
-                </p>
+                <% if(user.avatar && user.avatar.length>0){ %>
+                    <img src="<%=user.avatar %> " alt="<%=user.name %> img" style="width:100%">
+                    <% }else{%>
+                        <img src="https://www.kew.org/sites/default/files/styles/person_node/public/2022-01/Default_ProfilePicture.png?itok=mCp_2amt"
+                            alt="<%=user.name %> img" style="height:320px; width:500px; ">
+                        <% }%>
+                            <h1>
+                                <%=user.name %>
+                            </h1>
+                            <p class="title">
+                                <%=user.role%>
+                            </p>
+                            <p>
+                                <%=user.email %>
+                            </p>
+                            <p>
+                            <form action="/logout">
+                                <button>Logout</button>
+                            </form>
+                            </p>
             </div>
 
             <div class="card" style="width: 37vw; height: 60vh; background-color: rgb(200, 200, 200);">
@@ -77,29 +85,31 @@
             </div>
         </div>
 
-        <!-- <div class="card" style="width: 76vw; height: 60vh; margin: 0 auto; border:none;">
-        <div class="row no-gutters">
-            <div style="width: 38vw; height: 60vh; background-color: rgb(253, 253, 253);">
-                <img class="card-img" src="<%=user.avatar %>" alt="user img"
-                    style="width: 30vw; height: 50vh; border:2px solid white; border-radius:0%; margin: 0 auto; margin-top:50px;">
-            </div>
-            <div style="width: 37vw; height: 60vh; background-color: rgb(200, 200, 200);">
-                <div class="card-body">
-                    <form action="/updateUser/<%=user._id %>" method="post" enctype="multipart/form-data">
-                        <label for="username">Name: </label>
-                        <input type="text" value="<%= user.name %>" id="username" name="name">
-                        <br>
-                        <label for="email">Email: </label>
-                        <input type="email" value="<%= user.email %>" id="email" name="email">
-                        <br>
-                        <input type="file" placeholder="profile picture" name="avatar">
-                        <button style="color:white; background-color: black;" type="submit"> Update Profile</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
 </body>
+
+<script>
+
+    <% if (flash.success && flash.success.length > 0) { %>
+        Toastify({
+            text: '<%= flash.success%>',
+            className: "info",
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            }
+        }).showToast();
+    <%}%>
+
+    <% if (flash.error && flash.error.length > 0) { %>
+        Toastify({
+            text: '<%= flash.error%>',
+            className: "info",
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            }
+        }).showToast();
+      
+    <%}%>
+
+</script>
 
 </html>

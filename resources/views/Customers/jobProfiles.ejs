@@ -27,6 +27,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="../../../public/css/jobProfile.css" />
   <link rel="stylesheet" href="/css/app.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 
 <body>
@@ -43,47 +45,90 @@
       <br />
       <br />
       <% let count=0 %>
-        <%for(job of jobs){ %>
-          <% if(job.role==locals.role){%>
-            <% count=count + 1 %>
-              <div style="justify-content: space-between;">
-                <div style="width: 18rem; border: 2px solid blue;">
-                  <img src="<%=job.avatar %> " alt="<%=job.username %> pic" style="width:100%" class="card-img-top">
-                  <div class="card-body">
-                    <h1 class="text-center">
-                      <%=job.username%>
-                    </h1>
-                    <h5 class="card-subtitle text-center">
-                      <%=job.role%>
-                    </h5>
-                    <h5 class="card-subtitle text-center mt-2">Expected income: <%=job.income%>
-                    </h5>
+        <div class="container"
+          style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
+          <%for(job of jobs){ %>
+            <% if(job.role==locals.role){%>
+              <% count=count + 1 %>
+                <div class="card" style="margin-bottom: 35px;">
+                  <% if(job.avatar && job.avatar.length>0){ %>
+                    <img src="<%=job.avatar %> " alt="<%=job.username %> img" style="width:100%" class="card-img-top">
+                    <% }else{%>
+                      <img
+                        src="https://www.kew.org/sites/default/files/styles/person_node/public/2022-01/Default_ProfilePicture.png?itok=mCp_2amt"
+                        alt="<%=job.username %> img" style="height:300px; width:420px">
+                      <% }%>
+                        <div class="card-body">
+                          <h1 class="text-center">
+                            <%=job.username%>
+                          </h1>
+                          <h5 class="card-subtitle text-center">
+                            <%=job.role%>
+                          </h5>
+                          <h5 class="card-subtitle text-center mt-2">Expected income: <%=job.income%>
+                          </h5>
 
-                  </div>
-                  <div class="card-footer  text-center  bg-primary">
-                    <a type="none">
+                        </div>
+                        <div class="card-footer  text-center  bg-primary">
+                          <a type="none">
 
-                      <form action="/sendMail" method="post">
-                        <input type="text" style="display: none;" name="email" value=<%=job.email %>>
-                        <button>
-                          Hire
-                        </button>
-                      </form>
+                            <form action="/sendMail" method="post" onsubmit="btntog()">
+                              <input type="text" style="display: none;" name="email" value=<%=job.email %>>
+                              <button id="btn">
+                                Hire
+                              </button>
+                            </form>
 
-                    </a>
-                  </div>
+                          </a>
+                        </div>
                 </div>
-              </div>
-              <br />
-              <br />
-              <br />
-              <%} %>
-                <% }%>
-                  <% if(count===0){ %>
-                    <h1 style="text-align: center">No User Found For This Job Profile.</h1>
-                    <%}%>
+                <br />
+                <br />
+                <br />
+                <%} %>
+                  <% }%>
+                    <% if(count===0){ %>
+                      <h1 style="text-align: center">No User Found For This Job Profile.</h1>
+                      <%}%>
+        </div>
   </div>
   </div>
+
+  <script>
+
+    function btntog() {
+      console.log("btntog")
+      let btn = document.getElementById("btn");
+      if (btn.innerText == "Hire") {
+        btn.innerText = "Hired";
+      }
+      else {
+        btn.innerText = "Hire";
+      }
+    }
+      }
+    <% if (flash.success && flash.success.length > 0) { %>
+      Toastify({
+        text: '<%= flash.success%>',
+        className: "info",
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        }
+      }).showToast();
+    <%}%>
+
+    <% if (flash.error && flash.error.length > 0) { %>
+      Toastify({
+        text: '<%= flash.error%>',
+        className: "info",
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        }
+      }).showToast();
+      
+    <%}%>
+
+  </script>
 </body>
 
 </html>
