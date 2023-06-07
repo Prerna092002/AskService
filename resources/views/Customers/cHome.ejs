@@ -1,156 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>AskService | Customers</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <title>AskService | Customers</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/css/app.css" />
 
-  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-    crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/css/app.css" />
+    <link
+      type="image/png"
+      sizes="16x16"
+      rel="icon"
+      href="https://img.icons8.com/external-flat-wichaiwi/64/external-engineer-jobs-and-occupations-flat-wichaiwi.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </head>
 
-  <link type="image/png" sizes="16x16" rel="icon"
-    href="https://img.icons8.com/external-flat-wichaiwi/64/external-engineer-jobs-and-occupations-flat-wichaiwi.png">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <body>
+    <div class="container bcontent">
+      <%-include('../partials/navbar') %>
 
-</head>
-
-<body>
-  <div class="container bcontent">
-
-    <%-include('../partials/navbar') %>
-
-
-      <div style="text-align: center; color: blue;">
-        <span style="font-size:75px; font-weight:bolder">BOOK </span>
-        <span style="font-size:75px; font-weight: 100;">ONLINE</span>
+      <div class="mt-8" style="text-align: center; color: blue">
+        <span style="font-size: 75px; font-weight: bolder">BOOK </span>
+        <span style="font-size: 75px; font-weight: 100">ONLINE</span>
       </div>
       <hr />
 
-
       <!-- Home Cleaning -->
-      <div class="card" style="width: 1100px; height: 315px;">
+      <div class="card" style="width: 1100px; height: 315px">
         <div class="row no-gutters">
           <div class="col-sm-5">
-            <img class="card-img" src="/im/Cleaning" alt="Home Cleaning">
+            <img class="card-img" src="/im/Cleaning" alt="Home Cleaning" />
           </div>
-          <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
+          <div
+            class="col-sm-7"
+            style="
+              background-color: lightgray;
+              text-align: center;
+              align-items: center;
+            "
+          >
             <div class="card-body">
-              <br>
-              <br>
-              <h3 class="card-title" style="color: blue;">Home Cleaning</h3>
-              <p class="card-text" style="font-size: 20px;">Neat And Clean</p>
-              <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
+              <br />
+              <br />
+              <h3 class="card-title" style="color: blue">Home Cleaning</h3>
+              <p class="card-text" style="font-size: 20px">Neat And Clean</p>
+              <p class="card-text" style="font-size: 20px">Hourly/Monthly</p>
 
-
-              <a href="/jobProfile/HomeCleaning" class="btn btn-primary">View Profiles</a>
+              <a href="/jobProfile/HomeCleaning" class="btn btn-primary"
+                >View Profiles</a
+              >
             </div>
           </div>
         </div>
       </div>
 
-      <br><br><br>
+      <br /><br /><br />
 
-      <div class="card" style="width: 1100px; height: 315px;">
+      <div class="card" style="width: 1100px; height: 315px">
         <div class="row no-gutters">
           <div class="col-sm-5">
-            <img class="card-img" src="/im/Cook" alt="Cook">
+            <img class="card-img" src="/im/Cook" alt="Cook" />
           </div>
-          <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
+          <div
+            class="col-sm-7"
+            style="
+              background-color: lightgray;
+              text-align: center;
+              align-items: center;
+            "
+          >
             <div class="card-body">
-              <br>
-              <br>
-              <h3 class="card-title" style="color: blue;">Cook</h3>
-              <p class="card-text" style="font-size: 20px;">Excellent Taste And Variety</p>
-              <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
+              <br />
+              <br />
+              <h3 class="card-title" style="color: blue">Cook</h3>
+              <p class="card-text" style="font-size: 20px">
+                Excellent Taste And Variety
+              </p>
+              <p class="card-text" style="font-size: 20px">Hourly/Monthly</p>
 
-
-              <a href="/jobProfile/Cook" class="btn btn-primary">View Profiles</a>
+              <a href="/jobProfile/Cook" class="btn btn-primary"
+                >View Profiles</a
+              >
             </div>
           </div>
         </div>
       </div>
-      <br><br><br>
+      <br /><br /><br />
 
-      <div class="card" style="width: 1100px; height: 315px;">
+      <div class="card" style="width: 1100px; height: 315px">
         <div class="row no-gutters">
           <div class="col-sm-5">
-            <img class="card-img" src="/im/BabyCareTaker" alt="BabyCareTaker">
+            <img class="card-img" src="/im/BabyCareTaker" alt="BabyCareTaker" />
           </div>
-          <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
+          <div
+            class="col-sm-7"
+            style="
+              background-color: lightgray;
+              text-align: center;
+              align-items: center;
+            "
+          >
             <div class="card-body">
-              <br>
-              <br>
-              <h3 class="card-title" style="color: blue;">Baby CareTaker</h3>
-              <p class="card-text" style="font-size: 20px;">Provide Safe Educational Environment For Children</p>
-              <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
+              <br />
+              <br />
+              <h3 class="card-title" style="color: blue">Baby CareTaker</h3>
+              <p class="card-text" style="font-size: 20px">
+                Provide Safe Educational Environment For Children
+              </p>
+              <p class="card-text" style="font-size: 20px">Hourly/Monthly</p>
 
-
-              <a href="/jobProfile/BabyCaretaker" class="btn btn-primary">View Profiles</a>
+              <a href="/jobProfile/BabyCaretaker" class="btn btn-primary"
+                >View Profiles</a
+              >
             </div>
           </div>
         </div>
       </div>
-      <br><br><br>
+      <br /><br /><br />
 
-      <div class="card" style="width: 1100px; height: 315px;">
+      <div class="card" style="width: 1100px; height: 315px">
         <div class="row no-gutters">
           <div class="col-sm-5">
-            <img class="card-img" src="/im/PatientCare" alt="PateintCare">
+            <img class="card-img" src="/im/PatientCare" alt="PateintCare" />
           </div>
-          <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
+          <div
+            class="col-sm-7"
+            style="
+              background-color: lightgray;
+              text-align: center;
+              align-items: center;
+            "
+          >
             <div class="card-body">
-              <br>
-              <br>
-              <h3 class="card-title" style="color: blue;">Pateint Care</h3>
-              <p class="card-text" style="font-size: 20px;">Proper Care Medication And Nursing Home</p>
-              <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
+              <br />
+              <br />
+              <h3 class="card-title" style="color: blue">Pateint Care</h3>
+              <p class="card-text" style="font-size: 20px">
+                Proper Care Medication And Nursing Home
+              </p>
+              <p class="card-text" style="font-size: 20px">Hourly/Monthly</p>
 
-
-              <a href="/jobProfile/PateintCare" class="btn btn-primary">View Profile</a>
+              <a href="/jobProfile/PateintCare" class="btn btn-primary"
+                >View Profile</a
+              >
             </div>
           </div>
         </div>
       </div>
-      <br><br><br>
+      <br /><br /><br />
 
-      <div class="card" style="width: 1100px; height: 315px;">
+      <div class="card" style="width: 1100px; height: 315px">
         <div class="row no-gutters">
           <div class="col-sm-5">
-            <img class="card-img" src="/im/ElderlyCare" alt="ElderlyCare">
+            <img class="card-img" src="/im/ElderlyCare" alt="ElderlyCare" />
           </div>
-          <div class="col-sm-7" style="background-color: lightgray; text-align: center; align-items: center;">
+          <div
+            class="col-sm-7"
+            style="
+              background-color: lightgray;
+              text-align: center;
+              align-items: center;
+            "
+          >
             <div class="card-body">
-              <br>
-              <br>
-              <h3 class="card-title" style="color: blue;">Elderly Care</h3>
-              <p class="card-text" style="font-size: 20px;">Adult Day Care And Long Term Care</p>
-              <p class="card-text" style="font-size: 20px;">Hourly/Monthly</p>
+              <br />
+              <br />
+              <h3 class="card-title" style="color: blue">Elderly Care</h3>
+              <p class="card-text" style="font-size: 20px">
+                Adult Day Care And Long Term Care
+              </p>
+              <p class="card-text" style="font-size: 20px">Hourly/Monthly</p>
 
-
-              <a href="/jobProfile/ElderlyCare" class="btn btn-primary">View Profiles</a>
+              <a href="/jobProfile/ElderlyCare" class="btn btn-primary"
+                >View Profiles</a
+              >
             </div>
           </div>
         </div>
       </div>
-      <br><br><br>
-
-  </div>
-
-</body>
-
+      <br /><br /><br />
+    </div>
+  </body>
 </html>

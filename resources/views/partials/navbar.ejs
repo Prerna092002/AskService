@@ -1,42 +1,53 @@
-<nav class="container navbar">
-    <div>
-        <img src="https://img.icons8.com/ios-filled/100/carpenter.png" alt="carpenter" class="topImg" /><span><a
-                href="/" class="links">AskService</a></span>
-    </div>
+<nav class="container navbar" style="position: fixed; z-index: 999">
+  <div>
+    <img
+      src="https://img.icons8.com/ios-filled/100/carpenter.png"
+      alt="carpenter"
+      class="topImg"
+    /><span><a href="/" class="links">AskService</a></span>
+  </div>
 
-    <div>
-        <ul class="flex items-center">
-            <li class="ml-10 mt-3">
-                <h5><a href="/cHome" class="links">Hire</a></h5>
-            </li>
-            <li class="ml-10 mt-3">
-                <h5><a href="/wHome" class="links">Apply for job</a></h5>
-            </li>
-            <li class="ml-10 mt-3">
-                <h5><a href="/about" class="links">About</a></h5>
-            </li>
-            <% if(locals.user){%>
-                <li class="ml-10 mt-3">
-                    <h5><a href="/profile/<%=locals.user._id%>" class="links">
-                            <%=locals.user.name%>
-                        </a></h5>
-                </li>
-                <li class="ml-8 mt-2">
-                    <span>
-                        <% if(locals.user.avatar && locals.user.avatar.length>0){ %>
-                            <img src="<%=locals.user.avatar %> " alt="<%=locals.user.name %> img"
-                                style="height:32px; width:32px; border-radius:50%;">
-                            <% }else{%>
-                                <img src="https://www.kew.org/sites/default/files/styles/person_node/public/2022-01/Default_ProfilePicture.png?itok=mCp_2amt"
-                                    alt="<%=locals.user.name %> img" style="height:32px; width:32px">
-                                <% }%>
-                    </span>
-                </li>
-                <% }else{ %>
-                    <li class="ml-10 mt-3">
-                        <h5><a href="/login" class="links">Login</a></h5>
-                    </li>
-                    <% }%>
-        </ul>
-    </div>
+  <div>
+    <ul class="flex items-center">
+      <li class="ml-10 mt-3">
+        <h5><a href="/cHome" class="links">Hire</a></h5>
+      </li>
+      <li class="ml-10 mt-3">
+        <h5><a href="/wHome" class="links">Apply for job</a></h5>
+      </li>
+      <li class="ml-10 mt-3">
+        <h5><a href="/about" class="links">About</a></h5>
+      </li>
+      <% if(locals.user){%>
+      <li class="ml-10 mt-3">
+        <h5>
+          <a href="/profile/<%=locals.user._id%>" class="links">
+            <%=locals.user.name%>
+          </a>
+        </h5>
+      </li>
+      <li class="ml-8 mt-2">
+        <span>
+          <% if(locals.user.avatar && locals.user.avatar.length>0){ %>
+          <img
+            src="<%=locals.user.avatar %> "
+            alt="<%=locals.user.name %> img"
+            style="height: 32px; width: 32px; border-radius: 50%"
+          />
+          <% }else{%>
+          <img
+            src="https://www.kew.org/sites/default/files/styles/person_node/public/2022-01/Default_ProfilePicture.png?itok=mCp_2amt"
+            alt="<%=locals.user.name %> img"
+            style="height: 32px; width: 32px"
+          />
+          <% }%>
+        </span>
+      </li>
+      <% }else{ %>
+      <li class="ml-10 mt-3">
+        <h5><a href="/login" class="links">Login</a></h5>
+      </li>
+      <% }%>
+    </ul>
+  </div>
 </nav>

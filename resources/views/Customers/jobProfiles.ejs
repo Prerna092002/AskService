@@ -34,8 +34,8 @@
 <body>
   <div class="container bcontent">
     <%-include('../partials/navbar') %>
-
-      <div style="text-align: center; color: blue">
+        
+      <div class="mt-8" style="text-align: center; color: blue">
         <span style="font-size: 75px; font-weight: bolder">BOOK </span>
         <span style="font-size: 75px; font-weight: 100">ONLINE</span>
       </div>
@@ -45,18 +45,20 @@
       <br />
       <br />
       <% let count=0 %>
-        <div class="container"
-          style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
+        <div class="col-md-12 ml-12">
+          <!-- style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;" -->
+          
+          <div class="d-flex flex-wrap">
           <%for(job of jobs){ %>
             <% if(job.role==locals.role){%>
               <% count=count + 1 %>
-                <div class="card" style="margin-bottom: 35px;">
+                <div class="card m-8" style="margin-bottom: 35px;">
                   <% if(job.avatar && job.avatar.length>0){ %>
                     <img src="<%=job.avatar %> " alt="<%=job.username %> img" style="width:100%" class="card-img-top">
                     <% }else{%>
                       <img
                         src="https://www.kew.org/sites/default/files/styles/person_node/public/2022-01/Default_ProfilePicture.png?itok=mCp_2amt"
-                        alt="<%=job.username %> img" style="height:300px; width:420px">
+                        alt="<%=job.username %> img" style="height:200px; width:220px">
                       <% }%>
                         <div class="card-body">
                           <h1 class="text-center">
@@ -90,6 +92,7 @@
                     <% if(count===0){ %>
                       <h1 style="text-align: center">No User Found For This Job Profile.</h1>
                       <%}%>
+                    </div>
         </div>
   </div>
   </div>
