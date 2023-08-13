@@ -1,9 +1,11 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose'); // importing mongoose library
+const Schema = mongoose.Schema; // creating a reference to the schema class
+
 const multer = require('multer');
 const path = require('path');
 const AVATAR_PATH = path.join('/uploads');
 
+// defined a job schema
 const jobSchema = new Schema({
     username: { type: String, required: true },
     address: { type: String, required: true },
@@ -16,9 +18,10 @@ const jobSchema = new Schema({
     avatar: {
         type: String,
     },
-    isHired: { type: Boolean, required: true , default: false },
+    isHired: { type: Boolean, required: true, default: false },
 
-}, { timestamps: true });
+}, { timestamps: true }); // to add createdAt and updatedAt
+
 
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -33,5 +36,5 @@ let storage = multer.diskStorage({
 jobSchema.statics.uploadedAvatar = multer({ storage: storage }).single('avatar');
 jobSchema.statics.avatarPath = AVATAR_PATH;
 
-const Job = mongoose.model('Job', jobSchema);
-module.exports = Job;
+const Job = mongoose.model('Job', jobSchema); // creating a mongoose model
+module.exports = Job; //exporting the model
