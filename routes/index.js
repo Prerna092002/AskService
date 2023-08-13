@@ -1,10 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const User = require('../models/user_schema');
-const Job = require('../models/job_Schmea')
-const passport = require('passport');
-const nodemailer = require('nodemailer');
-const notifier = require('node-notifier');
+const express = require('express'); // requiring express module
+const router = express.Router(); // creating an instance of express router [to handle spe.kcific paths in your application]
+
+const User = require('../models/user_schema'); // user schema
+const Job = require('../models/job_Schmea'); // job schema
+
+const passport = require('passport'); // passport for authentication
+const nodemailer = require('nodemailer'); // for sending emails
+const notifier = require('node-notifier'); // to send system notifications from your application
 
 // for removing the file avatar
 const path = require('path');
@@ -21,27 +23,27 @@ var transporter = nodemailer.createTransport({
     secure: false
 });
 
-// home page
+// route for the home page
 router.get('/', function (req, res) {
-    return res.render('home');
+    return res.render('home'); // renders home page.[present inside views folder]
 });
 
 
+// route for the hiring page
 router.get('/cHome', async function (req, res) {
-    const jobs = await Job.find({});
-    return res.render('./Customers/cHome', {
-        jobs: jobs
-    });
+    return res.render('./Customers/cHome'); // renders the hire page. 
 });
 
+
+// route to view the specific jobs related to the particular role[View Profile]
 router.get('/jobProfile/:role', async function (req, res) {
-    const jobs = await Job.find({});
-    const role = req.params.role;
-    return res.render('./Customers/jobProfiles', {
-        jobs: jobs,
-        role: role
+    const jobs = await Job.find({}); // finding all the jobs. [asynchronous function]
+    const role = req.params.role;    // taking the value of role from params
+    return res.render('./Customers/jobProfiles', { // renders jobProfile page[sending this data to that page]
+        jobs: jobs, // passing all the jobs found in the hire page
+        role: role // passing the value of role also
     });
-})
+});
 
 router.post('/sendMail', passport.checkauthentication, async function (req, res) {
     const { email } = req.body;
@@ -52,13 +54,13 @@ router.post('/sendMail', passport.checkauthentication, async function (req, res)
             from: 'serviceask54@gmail.com', // sender address
             to: email, // list of receivers
             subject: 'You have new invitation for a job', // Subject line
-            text: `Hey ${job.username}! we're exited to tell you that ${req.user.name} just hired you` // Message
+            text: `Hey ${job.username}! we're exited to tell you that ${req.user.name} want to hire you for the role of ${job.role}` // Message
         });
         console.log('email sent successfully');
         req.flash('success', "Email sent successfully");
         notifier.notify({
             title: 'message',
-            message: `email seuccesfully sent to ${job.username}`,
+            message: `email successfully sent to ${job.username}`,
             sound: true
         });
 
@@ -73,16 +75,18 @@ router.post('/sendMail', passport.checkauthentication, async function (req, res)
         return res.redirect('back');
     }
 
-})
+});
 
+// rendres register page
 router.get('/register', function (req, res) {
+    // if already logined, redirect
     if (req.isAuthenticated()) {
         return res.redirect('/');
     }
-
     res.render('./auth/workers/register');
 });
 
+// create a new user in the database
 router.post('/register', async function (req, res) {
     try {
         const user = await User.findOne({ email: req.body.email });
@@ -102,8 +106,9 @@ router.post('/register', async function (req, res) {
 
 });
 
-
+// rendres login page
 router.get('/login', function (req, res) {
+    //  if already logined, redirect
     if (req.isAuthenticated()) {
         return res.redirect('/');
     }
@@ -112,7 +117,7 @@ router.get('/login', function (req, res) {
 });
 
 
-
+// logins the user after doing the authentication(matching the credentials and storing the id of user for sessions)
 router.post('/login', passport.authenticate(
     'local',
     {
@@ -124,30 +129,32 @@ router.post('/login', passport.authenticate(
     return res.redirect('./');
 });
 
-
+// log out
 router.get('/logout', function (req, res, next) {
     req.logout(function (err) {
         if (err) { return next(err); }
-    req.flash('success', "Logged out successfully");
+        req.flash('success', "Logged out successfully");
         res.redirect('/');
     });
 })
 
-
+// apply job page
 router.get('/wHome', function (req, res) {
     return res.render('./workers/wHome');
 });
 
+// about page
 router.get('/about', function (req, res) {
     return res.render('./about');
 });
 
-router.get('/chatbot', function (req, res) {
-    return res.render('./workers/chatbot');
-})
+// under development
+// router.get('/chatbot', function (req, res) {
+//     return res.render('./workers/chatbot');
+// })
 
 
-
+// creating a job
 router.post('/applyjob', async function (req, res) {
     try {
         const job = await Job.create(req.body);
@@ -162,6 +169,7 @@ router.post('/applyjob', async function (req, res) {
     }
 });
 
+// profile page for the user
 router.get('/profile/:id', async function (req, res) {
     const user = await User.findById(req.params.id);
 
@@ -175,6 +183,7 @@ router.get('/profile/:id', async function (req, res) {
     });
 });
 
+// update profile form
 router.post('/updateUser/:id', async function (req, res) {
     let id = req.params.id;
     if (req.user.id == req.params.id) {
@@ -182,7 +191,7 @@ router.post('/updateUser/:id', async function (req, res) {
             // finding the user of which we need to update the details.
             let user = await User.findById(req.params.id);
             // funciton from user schema
-            // multer provides 2 things with req--> for params req.body like we have before n=but now they are via multer as our parser is not able to parse multipart data.
+            // multer provides 2 things with req--> for params req.body like we have before but now they are via multer as our parser is not able to parse multipart data.
             // ans one is req,file-> wholde detail about file which is uploaded.
             User.uploadedAvatar(req, res, function (err) {
                 if (err) {
@@ -199,7 +208,7 @@ router.post('/updateUser/:id', async function (req, res) {
                     }
 
                     // setting the path of avatar inside schema
-                    user.avatar  = User.avatarPath + "/" + req.file.filename;
+                    user.avatar = User.avatarPath + "/" + req.file.filename;
                     console.log("pp updated");
                 }
                 user.save();
@@ -216,4 +225,4 @@ router.post('/updateUser/:id', async function (req, res) {
     }
 });
 
-module.exports = router;
+module.exports = router; //exporting the routes

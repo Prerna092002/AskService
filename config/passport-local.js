@@ -1,10 +1,10 @@
-const passport = require('passport');
+const passport = require('passport'); // importing passport
 
-const LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy; // local strategy for authentication
 
-const User = require('../models/user_schema');
+const User = require('../models/user_schema'); // user data
 
-
+// local strategy for passport authentication
 passport.use(new LocalStrategy({
     usernameField: 'email'
 }, async function (email, password, done) {
@@ -23,14 +23,15 @@ passport.use(new LocalStrategy({
         console.log(err);
         return;
     }
-
 }));
 
-
+// used to manage user session
+// This function is used to serialize a user object into a format that can be stored in the session. 
 passport.serializeUser(function (user, done) {
     return done(null, user.id);
 });
 
+// This function is used to retrieve the serialized user object from the session and deserialize it back into a user object.
 passport.deserializeUser(async function (id, done) {
     try {
         const user = await User.findById(id);
@@ -39,7 +40,7 @@ passport.deserializeUser(async function (id, done) {
             return;
         }
 
-        return done(null, user);
+        return done(null, user); // store in req.user
     } catch (err) {
         console.log("error in authenticating user");
         console.log(err);
@@ -47,6 +48,7 @@ passport.deserializeUser(async function (id, done) {
     }
 });
 
+// If the user is authenticated (i.e., logged in), it allows the request to proceed to the next middleware function
 passport.checkauthentication = function (req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -54,6 +56,7 @@ passport.checkauthentication = function (req, res, next) {
     return res.redirect('/login');
 }
 
+// It sets the user object from the req object to the res.locals object, which makes the user object available to your view templates. 
 passport.setAuthenticatedUser = function (req, res, next) {
     if (req.isAuthenticated()) {
         res.locals.user = req.user;

@@ -1,13 +1,15 @@
-const mongoose = require('mongoose');
-mongoose.connect(`mongodb+srv://KUNAL:KUNAL9900@mernapp.oaibt56.mongodb.net/AskService`);
+const mongoose = require('mongoose'); // importing mongoose library.
 
-const db = mongoose.connection;
+// establishing a connection to the mongoDB database.
+mongoose.connect(`mongodb+srv://kashishgoyal961:kashish905@askservice.qghlvoe.mongodb.net/AskService`);
+
+const db = mongoose.connection; // storing a reference of the database connection
 
 
-db.on('error', console.error.bind(console, 'error in connecting to the database'));
+db.on('error', console.error.bind(console, 'error in connecting to the database')); // event listener for error
 
-db.once('open', function (err) {
+db.once('open', function (err) { // event listener for the open event on the database connection.
     console.log("connected to the database");
 });
 
-module.exports = db;
+module.exports = db;    // exporting the database
